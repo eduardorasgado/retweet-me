@@ -2,6 +2,25 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 class App extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            body: ''
+        }
+        // bind
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+    }
+
+    handleChange(event) {
+        this.setState({
+            body: event.target.value
+        }) 
+    }
     render() {
         return (
             <div className="container">
@@ -11,12 +30,13 @@ class App extends Component {
                             <div className="card-header">Tweet something new!</div>
 
                             <div className="card-body">
-                                <form>
+                                <form onSubmit={this.handleSubmit}>
                                     <div className="form-group">
                                         <textarea className="form-control" 
                                                 rows="5" 
-                                                maxlength="140" 
+                                                maxLength="140" 
                                                 placeholder="Whats up?!"
+                                                onChange={this.handleChange}
                                                 required />
                                     </div>
                                     <input type="submit" value="Post" className="form-control"/>
