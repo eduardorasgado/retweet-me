@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// applying a middle ware for index in controller
+Route::group(['middleware' => ['auth']], function()
+{
+	Route::get('/', 'TimelineController@index');
+});
+
+
