@@ -2,7 +2,7 @@
 Was build with:
 
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
-<p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"></p>
+<p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" style="width: 80px;"></p>
 
 ## What is this?
 Retweetme is a mini messages sharing platform like tweeter.
