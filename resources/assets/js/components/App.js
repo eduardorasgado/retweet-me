@@ -14,6 +14,7 @@ class App extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
+        console.log(this.state.body)
     }
 
     handleChange(event) {

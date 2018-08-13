@@ -55817,6 +55817,7 @@ var App = function (_Component) {
         key: 'handleSubmit',
         value: function handleSubmit(event) {
             event.preventDefault();
+            console.log(this.state.body);
         }
     }, {
         key: 'handleChange',
