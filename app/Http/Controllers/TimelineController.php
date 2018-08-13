@@ -11,3 +11,4 @@ class TimelineController extends Controller
 		return view('home');
 	}
 }
+
