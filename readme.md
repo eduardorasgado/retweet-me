@@ -13,9 +13,12 @@ Read this:
 `php artisan preset react`
 
 ## How to run for make it yours:
+First, start your myql/postgresql service\
+Be sure you have created your retweetme database and your credentials on rule.\
+Run:\
+`php artisan make migrations` before running the project\
 `npm run watch` #1 terminal\
 `php artisan serve` #2 terminal
-`php artisan make migrations` before running the project
 
 ## License
 [MIT license](https://opensource.org/licenses/MIT).
