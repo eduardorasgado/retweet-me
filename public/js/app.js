@@ -55904,18 +55904,35 @@ var App = function (_Component) {
                                 this.state.posts.reverse().map(function (post) {
                                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'div',
-                                        { key: post.id },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: post.user.avatar }),
+                                        { key: post.id, className: 'media' },
                                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'a',
-                                            { href: '#' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'b',
-                                                null,
-                                                post.user.username
-                                            )
+                                            'div',
+                                            { className: 'media-left' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: post.user.avatar,
+                                                className: 'media-object mr-2' })
                                         ),
-                                        post.body
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'div',
+                                            { className: 'media-body' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'div',
+                                                { className: 'user' },
+                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                    'a',
+                                                    { href: '#' },
+                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                        'b',
+                                                        null,
+                                                        post.user.username
+                                                    )
+                                                )
+                                            ),
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'p',
+                                                null,
+                                                post.body
+                                            )
+                                        )
                                     );
                                 })
                             )

@@ -75,10 +75,19 @@ class App extends Component {
 
                             <div className="card-body">
                                 {this.state.posts.reverse().map(post => (
-                                    <div key={post.id}>
-                                        <img src={post.user.avatar} />
-                                        <a href='#'><b>{post.user.username}</b></a>
-                                        {post.body}
+                                    <div key={post.id} className="media">
+                                        <div className="media-left">
+                                            <img src={post.user.avatar} 
+                                                    className="media-object mr-2"/>
+                                        </div>
+                                        <div className="media-body">
+                                            <div className="user">
+                                                <a href='#'>
+                                                    <b>{post.user.username}</b>
+                                                </a>
+                                            </div>
+                                            <p>{post.body}</p>
+                                        </div>
                                     </div>
                                     ))}
                             </div>
