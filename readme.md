@@ -15,7 +15,7 @@ Read this:
 [Laravel and React JS](https://laravel.com/docs/5.6/frontend#using-react)\
 `php artisan preset react`
 
-## How to run for make it yours:
+## How to run to make it yours:
 First, start your myql/postgresql service\
 Be sure you have created your retweetme database and your credentials on rule.\
 Run:\
