@@ -52,4 +52,11 @@ class User extends Authenticatable
     {
         return $this->getAvatar();
     }
+
+    // see Customizing The Key Name
+    // in: https://laravel.com/docs/5.6/routing
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
 }

@@ -19,4 +19,7 @@ Route::group(['middleware' => ['auth']], function()
 	Route::get('/', 'TimelineController@index');
 	// for the post request of axios in App.js
 	Route::post('/posts', 'PostController@create');
+
+	// For profile showing, passing user parameter
+	Route::get('/users/{user}', 'UserController@index');
 });
