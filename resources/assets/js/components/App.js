@@ -22,7 +22,10 @@ class App extends Component {
 
     postData(event) {
         // method and what to send
-        axios.post('/posts', this.state.body)
+        // object to send must be in json
+        axios.post('/posts', {
+            body: this.state.body
+        })
     }
 
     handleChange(event) {

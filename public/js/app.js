@@ -55818,7 +55818,10 @@ var App = function (_Component) {
         key: 'postData',
         value: function postData(event) {
             // method and what to send
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', this.state.body);
+            // object to send must be in json
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', {
+                body: this.state.body
+            });
         }
     }, {
         key: 'handleChange',
