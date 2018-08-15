@@ -55830,6 +55830,9 @@ var App = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', {
                 body: this.state.body
             }).then(function (response) {
+                // this response comes from PostController.php after the req
+                // to /posts in web.php
+                console.log(response);
                 _this2.setState({
                     posts: [].concat(_toConsumableArray(_this2.state.posts), [response.data])
                 });
@@ -55902,6 +55905,16 @@ var App = function (_Component) {
                                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'div',
                                         { key: post.id },
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: post.user.avatar }),
+                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                            'a',
+                                            { href: '#' },
+                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                                'b',
+                                                null,
+                                                post.user.username
+                                            )
+                                        ),
                                         post.body
                                     );
                                 })

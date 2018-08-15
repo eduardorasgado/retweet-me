@@ -31,6 +31,9 @@ class App extends Component {
             body: this.state.body
         })
         .then(response => {
+            // this response comes from PostController.php after the req
+            // to /posts in web.php
+            console.log(response)
             this.setState({
                 posts: [...this.state.posts, response.data]
             })
@@ -73,6 +76,8 @@ class App extends Component {
                             <div className="card-body">
                                 {this.state.posts.reverse().map(post => (
                                     <div key={post.id}>
+                                        <img src={post.user.avatar} />
+                                        <a href='#'><b>{post.user.username}</b></a>
                                         {post.body}
                                     </div>
                                     ))}
