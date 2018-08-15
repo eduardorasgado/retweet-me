@@ -7,7 +7,7 @@ class App extends Component {
         super(props)
         this.state = {
             body: '',
-            posts: Array()
+            posts: []
         }
         // bind
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -18,6 +18,10 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault()
         this.postData()
+        // clear the state body
+        this.setState({
+            body: ''
+        })
     }
 
     postData(event) {
@@ -54,6 +58,7 @@ class App extends Component {
                                                 maxLength="140" 
                                                 placeholder="Whats up?!"
                                                 onChange={this.handleChange}
+                                                value={this.state.body}
                                                 required />
                                     </div>
                                     <input type="submit" value="Post" className="form-control"/>
@@ -66,7 +71,7 @@ class App extends Component {
                             <div className="card-header">Recent Tweets</div>
 
                             <div className="card-body">
-                                {this.state.posts.map(post => (
+                                {this.state.posts.reverse().map(post => (
                                     <div key={post.id}>
                                         {post.body}
                                     </div>

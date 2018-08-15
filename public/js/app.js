@@ -55802,7 +55802,7 @@ var App = function (_Component) {
 
         _this.state = {
             body: '',
-            posts: Array()
+            posts: []
             // bind
         };_this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.handleChange = _this.handleChange.bind(_this);
@@ -55815,6 +55815,10 @@ var App = function (_Component) {
         value: function handleSubmit(event) {
             event.preventDefault();
             this.postData();
+            // clear the state body
+            this.setState({
+                body: ''
+            });
         }
     }, {
         key: 'postData',
@@ -55872,6 +55876,7 @@ var App = function (_Component) {
                                             maxLength: '140',
                                             placeholder: 'Whats up?!',
                                             onChange: this.handleChange,
+                                            value: this.state.body,
                                             required: true })
                                     ),
                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'submit', value: 'Post', className: 'form-control' })
@@ -55893,7 +55898,7 @@ var App = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'card-body' },
-                                this.state.posts.map(function (post) {
+                                this.state.posts.reverse().map(function (post) {
                                     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                         'div',
                                         { key: post.id },
