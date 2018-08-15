@@ -17,4 +17,6 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function()
 {
 	Route::get('/', 'TimelineController@index');
+	// for the post request of axios in App.js
+	Route::post('/posts', 'PostController@create');
 });
