@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import axios from 'axios'
 
 class App extends Component {
     constructor(props) {
@@ -10,11 +11,18 @@ class App extends Component {
         // bind
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.postData = this.postData.bind(this)
     }
 
     handleSubmit(event) {
         event.preventDefault()
+        this.postData()
         console.log(this.state.body)
+    }
+
+    postData(event) {
+        // method and what to send
+        axios.post('/posts', this.state.body)
     }
 
     handleChange(event) {
