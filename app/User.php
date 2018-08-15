@@ -57,6 +57,10 @@ class User extends Authenticatable
     // in: https://laravel.com/docs/5.6/routing
     public function getRouteKeyName()
     {
+        // set to change default "id" await in Routing
+        // this works for /users/{user}
+        // in route in web.php
+        // username instead of looking for id
         return 'username';
     }
 }
