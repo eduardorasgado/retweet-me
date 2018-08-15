@@ -4,8 +4,11 @@ Was build with:
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="80px"></p>
 
+The project actually uses too:\
+[axios](https://github.com/axios/axios)
+
 ## What is this?
-Retweetme is a mini messages sharing platform like tweeter.
+Retweetme is a mini messages sharing platform like tweeter.\
 
 ## How do I set React with Laravel
 Read this:
