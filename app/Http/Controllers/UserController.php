@@ -10,6 +10,9 @@ class UserController extends Controller
 		// this is called in web.php Route for profile showing
     public function index(User $user)
     {
-    	dd($user);
+    	// dd($user);
+    	// looking for views folder then users folder and
+    	// index.blade.php
+    	return view('users.index', compact('user'));
     }
 }
