@@ -55812,7 +55812,6 @@ var App = function (_Component) {
         value: function handleSubmit(event) {
             event.preventDefault();
             this.postData();
-            console.log(this.state.body);
         }
     }, {
         key: 'postData',
@@ -55821,6 +55820,8 @@ var App = function (_Component) {
             // object to send must be in json
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', {
                 body: this.state.body
+            }).then(function (response) {
+                return console.log(response);
             });
         }
     }, {

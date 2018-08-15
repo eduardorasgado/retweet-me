@@ -6,7 +6,7 @@ class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            body: ''
+            body: '',
         }
         // bind
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,7 +17,6 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault()
         this.postData()
-        console.log(this.state.body)
     }
 
     postData(event) {
@@ -26,6 +25,7 @@ class App extends Component {
         axios.post('/posts', {
             body: this.state.body
         })
+        .then(response => console.log(response))
     }
 
     handleChange(event) {
