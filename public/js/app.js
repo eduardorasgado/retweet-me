@@ -55919,13 +55919,16 @@ var App = function (_Component) {
                                                 { className: 'user' },
                                                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                     'a',
-                                                    { href: '#' },
+                                                    { href: '/users/' + post.user.username },
                                                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                         'b',
                                                         null,
                                                         post.user.username
                                                     )
-                                                )
+                                                ),
+                                                ' ',
+                                                '- ',
+                                                post.created_at
                                             ),
                                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                                 'p',

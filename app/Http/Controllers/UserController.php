@@ -13,6 +13,7 @@ class UserController extends Controller
     	// dd($user);
     	// looking for views folder then users folder and
     	// index.blade.php
+    	// Compact creates an array containing variables and their values
     	return view('users.index', compact('user'));
     }
 }

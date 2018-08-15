@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    Hello {{ $user->username}}
+    {{ $user->username }}
 </div>
 @endsection
