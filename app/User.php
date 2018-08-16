@@ -63,4 +63,38 @@ class User extends Authenticatable
         // username instead of looking for id
         return 'username';
     }
+
+    // to prevent not been following to user itself 
+    public function isNotTheUser(User $user)
+    {
+        return $this->id !== $user->id;
+    }
+
+    // checkign if the user is already following
+    public function isFollowing(User $user)
+    {
+        // returns if is or not following
+        return (bool) $this->following()
+                            ->where('id', $user->id)
+                            ->count();
+    }
+
+    // check that we can or not follow the user
+    public function canFollow(User $user)
+    {
+        // check for user itself
+        if (!$this->isNotTheUser($user))
+        {
+                return false;
+        }
+        // check if user is not been following
+        return !$this->isFollowing($user);
+    }
+
+    //
+    public function following()
+    {
+        // the model and the table 
+        return $this->belongsToMany('App\User', 'follows', 'user_id', 'follower_id');
+    }
 }

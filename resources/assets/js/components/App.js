@@ -46,6 +46,7 @@ class App extends Component {
         }) 
     }
     render() {
+        const posts = this.state.posts.reverse()
         return (
             <div className="container">
                 <div className="row justify-content-center">
@@ -74,7 +75,7 @@ class App extends Component {
                             <div className="card-header">Recent Tweets</div>
 
                             <div className="card-body">
-                                {this.state.posts.reverse().map(post => (
+                                {posts.map(post => (
                                     <div key={post.id} className="media">
                                         <div className="media-left">
                                             <img src={post.user.avatar} 
