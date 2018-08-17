@@ -55831,7 +55831,7 @@ var App = function (_Component) {
             // from web.php
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/posts').then(function (response) {
                 return _this2.setState({
-                    posts: [].concat(_toConsumableArray(_this2.state.posts), _toConsumableArray(response.data.posts))
+                    posts: [].concat(_toConsumableArray(_this2.state.posts), _toConsumableArray(response.data.posts)).reverse()
                 });
             });
         }

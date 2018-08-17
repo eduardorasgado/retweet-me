@@ -32,7 +32,7 @@ class App extends Component {
         axios.get('/posts')
         .then((response) => 
                 this.setState({
-                    posts: [...this.state.posts, ...response.data.posts]
+                    posts: [...this.state.posts, ...response.data.posts].reverse()
                 })
             )
     }

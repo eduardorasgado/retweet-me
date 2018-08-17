@@ -49,7 +49,7 @@ class PostController extends Controller
 
 		// take method is for carry the json in small portions
 		// of data
-		$posts = $allPosts->orderBy('created_at', 'asc')
+		$posts = $allPosts->orderBy('created_at', 'desc')
 										->take(10)->get();
 
 		// transform into json response
