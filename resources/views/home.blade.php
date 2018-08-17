@@ -8,7 +8,7 @@
 
     @if(sizeof($following) > 0)
         @foreach($following as $user)
-            <a href="{{ route('users', $user) }}">{{ $user->username }}</a>
+            <p><a href="{{ route('users', $user) }}">{{ $user->username }}</a></p>
         @endforeach
     @else
         <p>You are not following anybody.</p>
@@ -18,7 +18,7 @@
 
     @if(sizeof($followers) > 0)
         @foreach($followers as $user)
-            <a href="{{ route('users', $user) }}">{{ $user->username }}</a>
+            <p><a href="{{ route('users', $user) }}">{{ $user->username }}</a></p>
         @endforeach
     @else
         <p>No body is following yet.</p>
