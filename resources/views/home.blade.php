@@ -6,8 +6,12 @@
     <hr>
     <h2>Following</h2>
 
-    @foreach($following as $user)
-        <p>{{ $user->username }}</p>
-    @endforeach
+    @if(sizeof($following) > 0)
+        @foreach($following as $user)
+            <a href="{{ route('users', $user) }}">{{ $user->username }}</a>
+        @endforeach
+    @else
+        <p>You are not following anybody.</p>
+    @endif
 </div>
 @endsection

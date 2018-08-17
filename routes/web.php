@@ -21,7 +21,7 @@ Route::group(['middleware' => ['auth']], function()
 	Route::post('/posts', 'PostController@create');
 
 	// For profile showing, passing user parameter
-	Route::get('/users/{user}', 'UserController@index');
+	Route::get('/users/{user}', 'UserController@index')->name('users');
 
 	//follow another user
 	Route::get('/users/{user}/follow', 'UserController@follow')->name('users.follow');
