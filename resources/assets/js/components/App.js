@@ -7,12 +7,14 @@ class App extends Component {
         super(props)
         this.state = {
             body: '',
-            posts: []
+            posts: [],
+            loading: false
         }
         // bind
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.postData = this.postData.bind(this)
+        this.getData = this.getData.bind(this)
     }
 
     handleSubmit(event) {
@@ -22,6 +24,21 @@ class App extends Component {
         this.setState({
             body: ''
         })
+    }
+
+    getData () {
+        // getting from PostController, index method
+        // from web.php
+        axios.get('/posts')
+        .then((response) => 
+                this.setState({
+                    posts: [...this.state.posts, ...response.data.posts]
+                })
+            )
+    }
+
+    componentWillMount () {
+        this.getData()
     }
 
     postData(event) {

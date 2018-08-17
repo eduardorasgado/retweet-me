@@ -45,7 +45,17 @@ class PostController extends Controller
 											->push($request->user()->id)
 										)->with('user');
 		// see all the posts it got
-		dd($allPosts->count());
+		// dd($allPosts->get());
+
+		// take method is for carry the json in small portions
+		// of data
+		$posts = $allPosts->orderBy('created_at', 'asc')
+										->take(10)->get();
+
+		// transform into json response
+		return response()->json([
+			'posts' => $posts,
+		]);
 	}
 
 	// we are using Post model too

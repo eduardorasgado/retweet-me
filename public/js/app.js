@@ -55802,11 +55802,13 @@ var App = function (_Component) {
 
         _this.state = {
             body: '',
-            posts: []
+            posts: [],
+            loading: false
             // bind
         };_this.handleSubmit = _this.handleSubmit.bind(_this);
         _this.handleChange = _this.handleChange.bind(_this);
         _this.postData = _this.postData.bind(_this);
+        _this.getData = _this.getData.bind(_this);
         return _this;
     }
 
@@ -55821,9 +55823,27 @@ var App = function (_Component) {
             });
         }
     }, {
+        key: 'getData',
+        value: function getData() {
+            var _this2 = this;
+
+            // getting from PostController, index method
+            // from web.php
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/posts').then(function (response) {
+                return _this2.setState({
+                    posts: [].concat(_toConsumableArray(_this2.state.posts), _toConsumableArray(response.data.posts))
+                });
+            });
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.getData();
+        }
+    }, {
         key: 'postData',
         value: function postData(event) {
-            var _this2 = this;
+            var _this3 = this;
 
             // method and what to send
             // object to send must be in json
@@ -55833,8 +55853,8 @@ var App = function (_Component) {
                 // this response comes from PostController.php after the req
                 // to /posts in web.php
                 console.log(response);
-                _this2.setState({
-                    posts: [].concat(_toConsumableArray(_this2.state.posts), [response.data])
+                _this3.setState({
+                    posts: [].concat(_toConsumableArray(_this3.state.posts), [response.data])
                 });
             });
         }
