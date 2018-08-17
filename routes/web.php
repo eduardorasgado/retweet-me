@@ -23,5 +23,9 @@ Route::group(['middleware' => ['auth']], function()
 	// For profile showing, passing user parameter
 	Route::get('/users/{user}', 'UserController@index');
 
+	//follow another user
 	Route::get('/users/{user}/follow', 'UserController@follow')->name('users.follow');
+
+	// unfollow user actually followed
+	Route::get('/users/{user}/unfollow', 'UserController@unfollow')->name('users.unfollow');
 });

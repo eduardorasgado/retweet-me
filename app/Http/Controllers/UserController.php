@@ -34,4 +34,9 @@ class UserController extends Controller
     	}
     	return redirect()->back();
     }
+
+    public function unfollow(Request $request, User $user)
+    {
+    	dd($user);
+    }
 }
