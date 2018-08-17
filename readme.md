@@ -23,8 +23,13 @@ First, start your myql/postgresql service\
 Be sure you have created your retweetme database and your credentials on rule.\
 Run:\
 `php artisan make migrations` before running the project\
-`npm run watch` #1 terminal\
 `php artisan serve` #2 terminal
+`npm run watch` #1 terminal\
+Now:\
+1. Open a web browser and open again but in private mode\
+2. Register 2 or more users and start following each others\
+3. Now you can tweet something between 2 users which follows each other\
+4. See the real time each 10 seconds(modify this on App.js component in resources/ asssets if you want)
 
 ## License
 [MIT license](https://opensource.org/licenses/MIT).
