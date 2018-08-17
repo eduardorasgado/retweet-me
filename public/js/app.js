@@ -55829,27 +55829,47 @@ var App = function (_Component) {
             var _this2 = this;
 
             // for showing a loading text
-            this.setState({
-                loading: true
-            });
+            // this.setState({
+            //     loading: true
+            // })
             // getting from PostController, index method
             // from web.php
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/posts').then(function (response) {
                 return _this2.setState({
-                    posts: [].concat(_toConsumableArray(_this2.state.posts), _toConsumableArray(response.data.posts)).reverse(),
-                    loading: false
+                    posts: [].concat(_toConsumableArray(response.data.posts)).reverse()
+                    // loading: false
                 });
             });
         }
     }, {
         key: 'componentWillMount',
         value: function componentWillMount() {
+            // preload the posts actual user have before component shows up
             this.getData();
+        }
+
+        // real time posts showing
+
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this3 = this;
+
+            // requesting posts to the server each second
+            this.interval = setInterval(function () {
+                return _this3.getData();
+            }, 10000);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            // when user leaves component, it will be executed
+            clearInterval(this.interval);
         }
     }, {
         key: 'postData',
         value: function postData(event) {
-            var _this3 = this;
+            var _this4 = this;
 
             // method and what to send
             // object to send must be in json
@@ -55858,9 +55878,9 @@ var App = function (_Component) {
             }).then(function (response) {
                 // this response comes from PostController.php after the req
                 // to /posts in web.php
-                console.log(response);
-                _this3.setState({
-                    posts: [].concat(_toConsumableArray(_this3.state.posts), [response.data])
+                // console.log(response)
+                _this4.setState({
+                    posts: [].concat(_toConsumableArray(_this4.state.posts), [response.data])
                 });
             });
         }
@@ -55868,7 +55888,8 @@ var App = function (_Component) {
         key: 'handleChange',
         value: function handleChange(event) {
             this.setState({
-                body: event.target.value
+                body: event.target.value,
+                posts: this.state.posts.reverse()
             });
         }
     }, {

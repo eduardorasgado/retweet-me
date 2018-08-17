@@ -29,22 +29,34 @@ class App extends Component {
 
     getData () {
         // for showing a loading text
-        this.setState({
-            loading: true
-        })
+        // this.setState({
+        //     loading: true
+        // })
         // getting from PostController, index method
         // from web.php
         axios.get('/posts')
         .then((response) => 
                 this.setState({
-                    posts: [...this.state.posts, ...response.data.posts].reverse(),
-                    loading: false
+                    posts: [...response.data.posts].reverse(),
+                    // loading: false
                 })
             )
     }
 
     componentWillMount () {
+        // preload the posts actual user have before component shows up
         this.getData()
+    }
+
+    // real time posts showing
+    componentDidMount () {
+        // requesting posts to the server each second
+        this.interval = setInterval(() => this.getData(), 10000)
+    }
+
+    componentWillUnmount () {
+        // when user leaves component, it will be executed
+        clearInterval(this.interval)
     }
 
     postData(event) {
@@ -56,7 +68,7 @@ class App extends Component {
         .then(response => {
             // this response comes from PostController.php after the req
             // to /posts in web.php
-            console.log(response)
+            // console.log(response)
             this.setState({
                 posts: [...this.state.posts, response.data]
             })
@@ -65,7 +77,8 @@ class App extends Component {
 
     handleChange(event) {
         this.setState({
-            body: event.target.value
+            body: event.target.value,
+            posts: this.state.posts.reverse()
         }) 
     }
 
