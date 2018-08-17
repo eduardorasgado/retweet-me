@@ -119,7 +119,7 @@ class App extends Component {
                             <div className="card-header">Recent Tweets</div>
 
                             <div className="card-body">
-                                {this.renderPosts()}
+                                {!this.state.loading ? this.renderPosts() : 'Loading...'}
                             </div>
                         </div>
                     </div>
