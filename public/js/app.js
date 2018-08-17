@@ -55809,6 +55809,7 @@ var App = function (_Component) {
         _this.handleChange = _this.handleChange.bind(_this);
         _this.postData = _this.postData.bind(_this);
         _this.getData = _this.getData.bind(_this);
+        _this.renderPosts = _this.renderPosts.bind(_this);
         return _this;
     }
 
@@ -55827,11 +55828,16 @@ var App = function (_Component) {
         value: function getData() {
             var _this2 = this;
 
+            // for showing a loading text
+            this.setState({
+                loading: true
+            });
             // getting from PostController, index method
             // from web.php
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/posts').then(function (response) {
                 return _this2.setState({
-                    posts: [].concat(_toConsumableArray(_this2.state.posts), _toConsumableArray(response.data.posts)).reverse()
+                    posts: [].concat(_toConsumableArray(_this2.state.posts), _toConsumableArray(response.data.posts)).reverse(),
+                    loading: false
                 });
             });
         }
@@ -55866,9 +55872,51 @@ var App = function (_Component) {
             });
         }
     }, {
+        key: 'renderPosts',
+        value: function renderPosts() {
+            var posts = this.state.posts.reverse();
+
+            return posts.map(function (post) {
+                return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { key: post.id, className: 'media' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'media-left' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: post.user.avatar,
+                            className: 'media-object mr-2' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'div',
+                            { className: 'user' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'a',
+                                { href: '/users/' + post.user.username },
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'b',
+                                    null,
+                                    post.user.username
+                                )
+                            ),
+                            ' ',
+                            '- ',
+                            post.created_at
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'p',
+                            null,
+                            post.body
+                        )
+                    )
+                );
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
-            var posts = this.state.posts.reverse();
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
                 { className: 'container' },
@@ -55922,43 +55970,7 @@ var App = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'card-body' },
-                                posts.map(function (post) {
-                                    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                        'div',
-                                        { key: post.id, className: 'media' },
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            { className: 'media-left' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: post.user.avatar,
-                                                className: 'media-object mr-2' })
-                                        ),
-                                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                            'div',
-                                            { className: 'media-body' },
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'div',
-                                                { className: 'user' },
-                                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                    'a',
-                                                    { href: '/users/' + post.user.username },
-                                                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                        'b',
-                                                        null,
-                                                        post.user.username
-                                                    )
-                                                ),
-                                                ' ',
-                                                '- ',
-                                                post.created_at
-                                            ),
-                                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                                'p',
-                                                null,
-                                                post.body
-                                            )
-                                        )
-                                    );
-                                })
+                                this.renderPosts()
                             )
                         )
                     )

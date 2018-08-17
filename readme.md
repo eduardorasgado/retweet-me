@@ -5,7 +5,7 @@ Was build with:
 <p align="center"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="80px"></p>
 
 The project actually uses too:\
-[axios.js Promise based HTTP client ](https://github.com/axios/axios)
+[axios.js Promise based HTTP client ](https://github.com/axios/axios)\
 [Pusher Notifications](https://pusher.com/)
 
 ## What is this?

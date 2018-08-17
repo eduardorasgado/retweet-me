@@ -15,6 +15,7 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.postData = this.postData.bind(this)
         this.getData = this.getData.bind(this)
+        this.renderPosts = this.renderPosts.bind(this)
     }
 
     handleSubmit(event) {
@@ -27,12 +28,17 @@ class App extends Component {
     }
 
     getData () {
+        // for showing a loading text
+        this.setState({
+            loading: true
+        })
         // getting from PostController, index method
         // from web.php
         axios.get('/posts')
         .then((response) => 
                 this.setState({
-                    posts: [...this.state.posts, ...response.data.posts].reverse()
+                    posts: [...this.state.posts, ...response.data.posts].reverse(),
+                    loading: false
                 })
             )
     }
@@ -62,8 +68,29 @@ class App extends Component {
             body: event.target.value
         }) 
     }
-    render() {
+
+    renderPosts() {
         const posts = this.state.posts.reverse()
+
+        return posts.map(post => (
+            <div key={post.id} className="media">
+                <div className="media-left">
+                    <img src={post.user.avatar} 
+                            className="media-object mr-2"/>
+                </div>
+                <div className="media-body">
+                    <div className="user">
+                        <a href={ `/users/${post.user.username}` }>
+                            <b>{post.user.username}</b>
+                        </a>{' '}
+                        - { post.created_at }
+                    </div>
+                    <p>{post.body}</p>
+                </div>
+            </div>
+        ))
+    }
+    render() {
         return (
             <div className="container">
                 <div className="row justify-content-center">
@@ -92,23 +119,7 @@ class App extends Component {
                             <div className="card-header">Recent Tweets</div>
 
                             <div className="card-body">
-                                {posts.map(post => (
-                                    <div key={post.id} className="media">
-                                        <div className="media-left">
-                                            <img src={post.user.avatar} 
-                                                    className="media-object mr-2"/>
-                                        </div>
-                                        <div className="media-body">
-                                            <div className="user">
-                                                <a href={ `/users/${post.user.username}` }>
-                                                    <b>{post.user.username}</b>
-                                                </a>{' '}
-                                                - { post.created_at }
-                                            </div>
-                                            <p>{post.body}</p>
-                                        </div>
-                                    </div>
-                                    ))}
+                                {this.renderPosts()}
                             </div>
                         </div>
                     </div>
