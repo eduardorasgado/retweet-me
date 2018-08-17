@@ -8,7 +8,7 @@ The project actually uses too:\
 [axios](https://github.com/axios/axios)
 
 ## What is this?
-Retweetme is a mini messages sharing platform like tweeter.\
+Retweetme is a mini messages sharing platform like twitter.
 
 ![Retweetme shot](./.readme-static/shot.png)
 
