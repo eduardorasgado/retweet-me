@@ -10,6 +10,8 @@ The project actually uses too:\
 ## What is this?
 Retweetme is a mini messages sharing platform like tweeter.\
 
+![Retweetme shot](./.readme-static/shot.png)
+
 ## How do I set React with Laravel
 Read this:
 [Laravel and React JS](https://laravel.com/docs/5.6/frontend#using-react)\
