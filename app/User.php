@@ -104,7 +104,7 @@ class User extends Authenticatable
     }
 
     // this  will return the followers from user given
-    public function follower()
+    public function followers()
     {
         // the model and the table 
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'user_id');
