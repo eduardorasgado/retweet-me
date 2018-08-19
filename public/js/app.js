@@ -65606,10 +65606,6 @@ var App = function (_Component) {
         value: function handleSubmit(event) {
             event.preventDefault();
             this.postData();
-            // clear the state body
-            this.setState({
-                body: ''
-            });
         }
     }, {
         key: 'getData',
@@ -65647,10 +65643,10 @@ var App = function (_Component) {
             // this.interval = setInterval(() => this.getData(), 10000)
 
             // laravel echo activated in: resources/assets/js
-            Echo.private('new-post').listen('PostCreated', function (e) {
-                console.log(e);
+            Echo.private('new-post').listen('PostCreated', function (event) {
+                console.log(event);
                 _this3.setState({
-                    posts: [].concat(_toConsumableArray(_this3.state.posts), [e.post])
+                    posts: [].concat(_toConsumableArray(_this3.state.posts), [event.post])
                 });
             });
         }
@@ -65675,7 +65671,9 @@ var App = function (_Component) {
                 // to /posts in web.php
                 // console.log(response)
                 _this4.setState({
-                    posts: [].concat(_toConsumableArray(_this4.state.posts), [response.data])
+                    posts: [].concat(_toConsumableArray(_this4.state.posts), [response.data]),
+                    // clear the state body
+                    body: ''
                 });
             });
         }

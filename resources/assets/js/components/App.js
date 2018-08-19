@@ -21,10 +21,6 @@ class App extends Component {
     handleSubmit(event) {
         event.preventDefault()
         this.postData()
-        // clear the state body
-        this.setState({
-            body: ''
-        })
     }
 
     getData () {
@@ -54,10 +50,10 @@ class App extends Component {
         // this.interval = setInterval(() => this.getData(), 10000)
 
         // laravel echo activated in: resources/assets/js
-        Echo.private('new-post').listen('PostCreated', (e) => {
-            console.log(e)
+        Echo.private('new-post').listen('PostCreated', (event) => {
+            console.log(event)
             this.setState({
-                posts: [...this.state.posts, e.post]
+                posts: [...this.state.posts, event.post]
             })
         })
     }
@@ -79,7 +75,9 @@ class App extends Component {
             // to /posts in web.php
             // console.log(response)
             this.setState({
-                posts: [...this.state.posts, response.data]
+                posts: [...this.state.posts, response.data],
+                // clear the state body
+                body: ''
             })
         })
     }
