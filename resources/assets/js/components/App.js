@@ -78,7 +78,8 @@ class App extends Component {
             body: this.state.body
         })
         .then(response => {
-            console.log('from handle submit', response)
+            // console.log('from handle submit', response)
+            
             // this response comes from PostController.php after the req
             // to /posts in web.php
             // console.log(response)

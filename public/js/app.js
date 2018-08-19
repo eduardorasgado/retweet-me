@@ -65674,7 +65674,8 @@ var App = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_2_axios___default.a.post('/posts', {
                 body: this.state.body
             }).then(function (response) {
-                console.log('from handle submit', response);
+                // console.log('from handle submit', response)
+
                 // this response comes from PostController.php after the req
                 // to /posts in web.php
                 // console.log(response)
