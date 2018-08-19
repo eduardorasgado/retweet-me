@@ -5,7 +5,10 @@
     <div class="row">
         <div class="col-md-2">
 
-            <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->username }}">
+            <img src="{{ Auth::user()->avatar }}" 
+                    alt="{{ Auth::user()->username }}" height="80px">
+            <hr>
+            <h2 class="text-primary">{{ Auth::user()->username }}</h2>
 
             <h2>Following</h2>
 

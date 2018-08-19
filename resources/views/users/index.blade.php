@@ -2,15 +2,19 @@
 
 @section('content')
 <div class="container">
+		<a href="{{ URL::previous() != url()->current() ? URL::previous() : "/" }}" class="btn">Back</a>
+		<br>
+		<br>
+		
 	  <!--Remember: this user comes from UserController in index methods-->
-    {{ $user->username }}
+    <h1 class="text-primary">{{ $user->username }}</h1>
     <hr>
 
     @if(Auth::user()->isNotTheUser($user))
     	@if(Auth::user()->isFollowing($user))
-    		<a href="{{ route('users.unfollow', $user) }}">Unfollow</a>
+    		<a href="{{ route('users.unfollow', $user) }}" class="btn btn-secondary">Unfollow</a>
     	@else
-    		<a href="{{ route('users.follow', $user) }}">Follow</a>
+    		<a href="{{ route('users.follow', $user) }}" class="btn btn-success">Follow</a>
     	@endif
     @endif
 </div>
