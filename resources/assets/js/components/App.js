@@ -143,15 +143,16 @@ class App extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6">
-                        <div className="card">
-                            <div className="card-header">Recent Tweets</div>
-
-                            <div className="card-body">
-                                {!this.state.loading ? this.renderPosts() : 'Loading...'}
+                    { this.state.posts.length > 0 && (
+                        <div className="col-md-6">
+                            <div className="card">
+                                <div className="card-header">Recent Tweets</div>
+                                <div className="card-body">
+                                    {!this.state.loading ? this.renderPosts() : 'Loading...'}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
                 </div>
             </div>
         );
