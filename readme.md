@@ -7,6 +7,7 @@ Was build with:
 The project actually uses too:\
 [axios.js Promise based HTTP client ](https://github.com/axios/axios)\
 [Pusher Notifications](https://pusher.com/)
+[Pusher php sdk](https://github.com/pusher/pusher-http-php)
 
 ## What is this?
 Retweetme is a mini messages sharing platform like twitter.
