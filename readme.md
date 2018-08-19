@@ -19,6 +19,9 @@ Read this:
 [Laravel and React JS](https://laravel.com/docs/5.6/frontend#using-react)\
 `php artisan preset react`
 
+## How to work with Pusher and Laravel
+[Instructions from Pusher](https://pusher.com/tutorials/web-notifications-laravel-pusher-channels)
+
 ## How to run to make it yours:
 First, start your myql/postgresql service\
 Be sure you have created your retweetme database and your credentials on rule.
