@@ -51,10 +51,18 @@ class App extends Component {
 
         // laravel echo activated in: resources/assets/js
         Echo.private('new-post').listen('PostCreated', (event) => {
-            console.log(event)
-            this.setState({
-                posts: [...this.state.posts, event.post]
-            })
+            // console.log('from pusher', event)
+            // this.setState({
+            //     posts: [...this.state.posts, event.post]
+            // })
+
+            // window.Laravel was created in head on app.blade html
+            if(window.Laravel.user.following.includes(event.post.user_id)) {
+                // then add those posts in the timeline
+                this.setState({
+                    posts: [...this.state.posts, event.post]
+                })
+            }
         })
     }
 

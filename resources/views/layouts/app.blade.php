@@ -19,6 +19,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <script type="text/javascript">
+        // having the following users in the window object
+        window.Laravel = <?php
+            echo json_encode([
+                'csrfToken' => csrf_token(),
+                'user' => [
+                    // logged user
+                    'id' => Auth::check() ? Auth::user()->id : null,
+                    // to whom follows
+                    'following' => Auth::check() ? Auth::user()->following()->pluck('users.id') : null,
+                ],
+            ]);
+        ?>
+    </script>
 </head>
 <body>
     <div id="app">
