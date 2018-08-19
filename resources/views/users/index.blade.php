@@ -5,7 +5,8 @@
 		<a href="{{ URL::previous() != url()->current() ? URL::previous() : "/" }}" class="btn">Back</a>
 		<br>
 		<br>
-		
+		<img src="{{ $user->avatar }}" 
+                    alt="{{ $user->username }}" height="80px">
 	  <!--Remember: this user comes from UserController in index methods-->
     <h1 class="text-primary">{{ $user->username }}</h1>
     <hr>

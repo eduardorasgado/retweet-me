@@ -79,7 +79,7 @@ class App extends Component {
         })
         .then(response => {
             // console.log('from handle submit', response)
-            
+
             // this response comes from PostController.php after the req
             // to /posts in web.php
             // console.log(response)
@@ -121,7 +121,7 @@ class App extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-md-6">
                         <div className="card">

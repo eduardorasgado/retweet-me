@@ -1,14 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="col-md-12" style="background-color: white; padding: 10px: margin-top:-24px;">
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-4">
 
             <img src="{{ Auth::user()->avatar }}" 
                     alt="{{ Auth::user()->username }}" height="80px">
             <hr>
             <h2 class="text-primary">{{ Auth::user()->username }}</h2>
+        </div>
+
+        <div class="col-md-4">
 
             <h2>Following</h2>
 
@@ -19,6 +22,9 @@
             @else
                 <p>You are not following anybody.</p>
             @endif
+        </div>
+
+        <div class="col-md-4">
 
             <h2>Followers</h2>
 
@@ -29,8 +35,8 @@
             @else
                 <p>No body is following yet.</p>
             @endif
-        </div>   
-    
+        </div>
+
         <div class="col-md-10">
             <div id="root"></div>
         </div>
