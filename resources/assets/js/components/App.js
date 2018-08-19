@@ -51,12 +51,20 @@ class App extends Component {
     // real time posts showing
     componentDidMount () {
         // requesting posts to the server each second
-        this.interval = setInterval(() => this.getData(), 10000)
+        // this.interval = setInterval(() => this.getData(), 10000)
+
+        // laravel echo activated in: resources/assets/js
+        Echo.private('new-post').listen('PostCreated', (e) => {
+            console.log(e)
+            this.setState({
+                posts: [...this.state.posts, e.post]
+            })
+        })
     }
 
     componentWillUnmount () {
         // when user leaves component, it will be executed
-        clearInterval(this.interval)
+        // clearInterval(this.interval)
     }
 
     postData(event) {
@@ -66,6 +74,7 @@ class App extends Component {
             body: this.state.body
         })
         .then(response => {
+            console.log('from handle submit', response)
             // this response comes from PostController.php after the req
             // to /posts in web.php
             // console.log(response)

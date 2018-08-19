@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // importing the namespace of Post model
 use App\Post;
+// using Event for pusher
+use App\Events\PostCreated;
 
 class PostController extends Controller
 {
@@ -68,6 +70,12 @@ class PostController extends Controller
   	$createdPost = $request->user()->posts()->create([
   		'body' => $request->body,
   	]);
+
+  	// broadcast to pusher and  in App\Events
+  	// to others method is to tell broadcast is for other
+  	// users, not for the user who creates the post
+  	broadcast(new PostCreated($createdPost, $request->user()))->toOthers();
+  	// now go to rotes\channels
 
   	// RETURN A RESPONSE
   	// loking for thw owner of the post

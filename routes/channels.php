@@ -1,5 +1,7 @@
 <?php
 
+use Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -13,4 +15,10 @@
 
 Broadcast::channel('App.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+// new-post is inside PrivateChannel in App\Evets\PostCreated
+Broadcast::channel('new-post', function ($user) {
+		//for authenticated users only
+    return Auth::check();
 });
